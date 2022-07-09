@@ -1,0 +1,12 @@
+body {
+    margin: 0 100px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin-top: 25px;
+    row-gap: 50px;
+    column-gap: 50px;
+}

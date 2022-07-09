@@ -1,0 +1,21 @@
+.primary__div {
+    /*background: #E7E7E7;*/
+    position: relative;
+    margin: 17px 0 0 0;
+
+    input {
+        width: 100%;
+        background: #E7E7E7;
+        border: none;
+        border-radius: 5px;
+        height: 69px;
+        padding-left: 18px;
+        font-size: larger;
+    }
+    .fas {
+        position: absolute;
+        right: 0;
+        top: 18px;
+        font-size: 36px;
+    }
+}

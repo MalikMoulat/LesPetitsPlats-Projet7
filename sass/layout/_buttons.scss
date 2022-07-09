@@ -1,0 +1,117 @@
+/* section secondary */
+
+.secondary {
+    display: flex;
+    column-gap: 20px;
+    margin: 15px 0 0 0;
+
+    button {
+        align-items: center;
+        height: 69px;
+        width: 170px;
+        justify-content: space-between;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 0;
+        border: none;
+        color: #ffff;
+        cursor: pointer;
+        p {
+            margin: 0 0 0 18px;
+        }
+    }
+    
+    .button--dropdown {
+        position: relative;
+        width: fit-content;
+        height: 69px;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 70% 20%;
+        column-gap: 10%;
+        align-items: center;
+        display: none;
+
+        p {
+            margin: 19px 28px 19px 18px;
+            color: #ffff;
+            
+        }
+        .fa-chevron-down{
+            color: #ffff;
+            text-align: end;
+            margin-right: 18px;
+            cursor: pointer;
+            position: relative;
+            z-index: 3;
+        }
+        div {
+            grid-column: 1/3;
+            padding: 15px;
+            border-radius: 0 0 5px 5px;
+            width: 550px;
+            /*display: none;*/
+            
+            ul {
+                display: grid;
+                grid-template-columns: 33% 33% 33%;
+                position: relative;
+                z-index: 3;
+                max-width: 700px;
+                overflow: hidden;
+                margin: -0.5rem 0 0 0;
+                padding: 0;
+
+                li {
+                    color: white;
+                    cursor: pointer;
+                    font-size: 18px;
+                    list-style: none;
+                    text-align: start;
+                    margin: 5px;
+                }
+                li:hover {
+                    background-color: #ffff;
+                    color: $colour-ingredients;
+                }
+            }
+        }
+    }
+    &__ingredients {
+        background: $colour-ingredients;
+    }
+    &__appareils {
+        background: $colour-appareils;
+    }
+    &__ustensils {
+        background: $colour-ustensils;
+    }
+    input {
+        background-color: transparent;
+        width: 83%;
+        height: 22px;
+        color: #ffff;
+        border: none;
+        margin: 19px 28px 19px 18px;
+        /*display: none;*/
+        position: relative;
+        z-index: 10;
+        
+    }
+    input::placeholder {
+        color: #ffff;
+    }
+    .chevron--dropdown--open {
+        /*display: none;*/
+    }
+}
+
+.color__ingredients {
+    background: $colour-ingredients;
+}
+.color__appareils {
+    background: $colour-appareils;
+}
+.color__ustensils {
+    background: $colour-ustensils;
+}
