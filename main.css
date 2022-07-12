@@ -119,7 +119,15 @@ body {
 }
 .secondary .button--dropdown div ul li:hover {
   background-color: white;
+}
+.secondary .button--dropdown div ul .ingredients--list:hover {
   color: #3282F7;
+}
+.secondary .button--dropdown div ul .appareils--list:hover {
+  color: #68D9A4;
+}
+.secondary .button--dropdown div ul .ustensils--list:hover {
+  color: #ED6454;
 }
 .secondary__ingredients {
   background: #3282F7;

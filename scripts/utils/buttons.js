@@ -10,13 +10,13 @@ function openDropdow(id, type) {
     btnChildren[1].style.transform = "rotate(180deg)"
     btnChildren[1].style.textAlign = "start"
 
-    document.addEventListener('click', function(event) {
+    /*document.addEventListener('click', function(event) {
         let btnList0 = btnList.contains(event.target);
         if (!btnList0) {
             //Do something click is outside specified element
             btnList0[0].style.display = "none"
         }
-    })
+    })*/
     
 }
 
