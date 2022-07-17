@@ -44,6 +44,27 @@ body {
        column-gap: 50px;
 }
 
+#tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.tags {
+  display: flex;
+  color: white;
+  align-items: center;
+  margin: 10px 5px 0 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.tags p {
+  margin: 0 10px 0 0;
+}
+
+.hidden {
+  display: none;
+}
+
 /* section secondary */
 .secondary {
   display: flex;

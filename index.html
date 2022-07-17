@@ -19,6 +19,10 @@
             </div>
         </section>
 
+        <section id="tags">
+
+        </section>
+
         <section class="secondary">
             <div>
                 <button class="btn__ingredients color__ingredients" onclick="openDropdow('secondary__ingredients', 'ingredients')">
@@ -27,7 +31,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </span>
                 </button>
-                <div class="secondary__ingredients button--dropdown">
+                <div id="secondary__ingredients" class="secondary__ingredients button--dropdown">
                     <input type="text" placeholder="Rechercher un ingredient">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__ingredients', 'ingredients')"></i>
                     <div class="color__ingredients">
@@ -45,7 +49,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </span>
                 </button>
-                <div class="secondary__appareils button--dropdown">
+                <div id="secondary__appareils" class="secondary__appareils button--dropdown">
                     <input type="text" placeholder="Rechercher un appareil">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__appareils', 'appareils')"></i>
                     <div class="color__appareils">
@@ -63,7 +67,7 @@
                         <i class="fas fa-chevron-down"></i>
                     </span>
                 </button>
-                <div class="secondary__ustensils button--dropdown">
+                <div id="secondary__ustensils" class="secondary__ustensils button--dropdown">
                     <input type="text" placeholder="Rechercher un ustensil">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__ustensils', 'ustensils')"></i>
                     <div class="color__ustensils">
@@ -86,6 +90,7 @@
 
         <script src="scripts/main.js" type="module"></script>
         <script src="scripts/utils/buttons.js"></script>
+        <script src="scripts/utils/tags.js"></script>
 
         
 

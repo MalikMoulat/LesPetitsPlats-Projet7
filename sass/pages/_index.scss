@@ -10,3 +10,21 @@ body {
     row-gap: 50px;
     column-gap: 50px;
 }
+
+#tags {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tags {
+    display: flex;
+    color: white;
+    align-items: center;
+    margin: 10px 5px 0 0;
+    padding: 10px;
+    border-radius: 5px;
+
+    p {
+        margin: 0 10px 0 0;
+    }
+}
