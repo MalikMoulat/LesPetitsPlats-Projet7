@@ -32,7 +32,7 @@
                     </span>
                 </button>
                 <div id="secondary__ingredients" class="secondary__ingredients button--dropdown">
-                    <input type="text" placeholder="Rechercher un ingredient">
+                    <input id="input__ingredients" type="text" placeholder="Rechercher un ingredient">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__ingredients', 'ingredients')"></i>
                     <div class="color__ingredients">
                         <ul id="dropdown__ingredients--list">
@@ -50,7 +50,7 @@
                     </span>
                 </button>
                 <div id="secondary__appareils" class="secondary__appareils button--dropdown">
-                    <input type="text" placeholder="Rechercher un appareil">
+                    <input id="input__appareils" type="text" placeholder="Rechercher un appareil">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__appareils', 'appareils')"></i>
                     <div class="color__appareils">
                         <ul id="dropdown__appareils--list">
@@ -68,7 +68,7 @@
                     </span>
                 </button>
                 <div id="secondary__ustensils" class="secondary__ustensils button--dropdown">
-                    <input type="text" placeholder="Rechercher un ustensil">
+                    <input id="input__ustensils" type="text" placeholder="Rechercher un ustensil">
                     <i class="fas fa-chevron-down chevron--dropdown--open" role="button" onclick="closeDropdow('secondary__ustensils', 'ustensils')"></i>
                     <div class="color__ustensils">
                         <ul id="dropdown__ustensils--list">
@@ -86,11 +86,13 @@
 
         <script src="data/recipes.js"></script>
         <script src="scripts/pages/index.js" type="module"></script>
+        <script src="scripts/factories/tags_list.js"></script>
         <script src="scripts/factories/recipes_card.js"></script>
 
         <script src="scripts/main.js" type="module"></script>
         <script src="scripts/utils/buttons.js"></script>
         <script src="scripts/utils/tags.js"></script>
+        <script src="scripts/utils/search_tags.js"></script>
 
         
 

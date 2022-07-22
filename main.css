@@ -65,6 +65,10 @@ body {
   display: none;
 }
 
+.hidden {
+  display: none;
+}
+
 /* section secondary */
 .secondary {
   display: flex;
