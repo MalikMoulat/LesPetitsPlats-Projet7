@@ -3,27 +3,35 @@ function selectTag(){
 
     //Récupère les elements du DOM
     const tagSection = document.getElementById('tags') // Section tag
-    const tagList = document.getElementsByClassName('tag--list') // Selectionne tout les tags dans le DOM
+    const tagList = document.getElementsByClassName('tag--list') // Selectionne tout les tags des dropDown btn du DOM
 
         // Boucle dans le tableau des tags
         for (let i = 0; i < tagList.length; i++) {
 
             // Écoute l'evenement click sur le tag
             tagList[i].addEventListener('click', (e) => {
-                
+
                 // Récupère la valeur du tag cliquer
                 const tagClicked = tagList[i].innerHTML
+
                 // Récupère data-type (pour ajouter la couleur de fond via une class)
                 const getDataType = tagList[i].getAttribute("data-type")
-                // Crée la div avec les valeurs récupèrer
-                const tagAddOnSection = `   <div class="${'color__' + getDataType} tags">
-                                                <p>${tagClicked}</p>
-                                                <i class="far fa-times-circle" onclick="deleteTag()"></i>
-                                            </div>`
-                
-                // Injecte la div dans le DOM
-                tagSection.insertAdjacentHTML('beforeEnd', tagAddOnSection)
 
+                // Si le tags est déja dans le DOM il est récupérer
+                const tagsDom = document.getElementsByClassName('tags__' + tagClicked.toLocaleLowerCase().replace(/ /g, ''))
+                
+                // Si la liste de tagsDom est inférieur à 1 celà veut dire que le tags n'a pas encore été selectionner donc je l'ajoute au DOM
+                if (tagsDom.length < 1) {
+                    // Crée la div avec les valeurs récupèrer
+                    const tagAddOnSection = `   <div class="${'color__' + getDataType} tags">
+                                                    <p class="${'tags__' + tagClicked.toLocaleLowerCase().replace(/ /g, '')} tags__p">${tagClicked}</p>
+                                                    <i class="far fa-times-circle" onclick="deleteTag()"></i>
+                                                </div>`
+
+                    // Injecte la div dans le DOM
+                    tagSection.insertAdjacentHTML('beforeEnd', tagAddOnSection)
+
+                }
             })
         }
 }
@@ -46,3 +54,5 @@ function deleteTag(){
             })
         }
 }
+
+
