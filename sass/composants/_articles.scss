@@ -31,12 +31,27 @@ article {
             display: grid;
             grid-template-columns: 1fr 1fr;
             min-height: 105px;
+            column-gap: 10px;
 
-            & div {
+            & .desc--recipe {
+                
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-height: 150px;
+                
                 
                 & p {
                     font-size: 12px;
                     margin: 0;
+                    /*height: 105px;*/
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 6;
+                    -webkit-box-orient: vertical;
+                    text-align: justify;
+                    
+                    
                 }
                 
             }

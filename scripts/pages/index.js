@@ -18,4 +18,4 @@ async function init () {
     displayData(recipes)
 }
 
-init()
+//init()

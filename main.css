@@ -230,10 +230,24 @@ article .card__desc--recipe {
   display: grid;
   grid-template-columns: 1fr 1fr;
   min-height: 105px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
-article .card__desc--recipe div p {
+article .card__desc--recipe .desc--recipe {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 150px;
+}
+article .card__desc--recipe .desc--recipe p {
   font-size: 12px;
   margin: 0;
+  /*height: 105px;*/
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  text-align: justify;
 }
 article .card__desc--recipe div p {
   margin: 0;

@@ -1,7 +1,7 @@
 // list = array     dropDownBtn = DOM   type = ingredients or appareils or ustensils
-function addListDom(list, dropDownBtn, type) {
+function addListDom(liste, dropDownBtn, type) {
 
-    list.forEach(list => {
+    liste.forEach(list => {
 
         list = list.charAt(0).toUpperCase() + list.slice(1)
 

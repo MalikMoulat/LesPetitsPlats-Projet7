@@ -1,28 +1,24 @@
 
+// Les fonction ci-dessous servent à afficher les listes dans les btnDropdown et gere la recherche des tags
+
 /********************
 * Ingredients list *
 *******************/
-function searchTagsIngredients(){
+function searchTagsIngredients(recipesArr){
 
     // élements du DOM
     const dropDownBtnIngredients = document.getElementById('dropdown__ingredients--list')
-    const dropDownBtnAppareils = document.getElementById('dropdown__appareils--list')
-    const dropDownBtnUstensils = document.getElementById('dropdown__ustensils--list')
+
+    // Vide le DOM de son contenue
+    dropDownBtnIngredients.innerHTML = ""
 
     // initialisation des variables
     let tabIngredients = []
-    let tabAppareils = []
-    let tabUstensils = []
 
     // Input
     const inputIngredients = document.getElementById('input__ingredients')
-    const inputAppareils = document.getElementById('input__appareils')
-    const inputUstensils = document.getElementById('input__ustensils')
 
-
-
-    
-    recipes.forEach(recette => {
+    recipesArr.forEach(recette => {
         // Re-boucle sur les tableaux d'ingrédients pour les concatener 
         recette.ingredients.forEach((ingredients) => {
             
@@ -38,12 +34,13 @@ function searchTagsIngredients(){
 
     // Affiche les tags
     addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
+    selectTag('ingredients--list')
     
     // Écoute l'input
     inputIngredients.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(e){
+    function filterData(){
 
         // Vide la liste des tags du DOM
         dropDownBtnIngredients.innerHTML = ""
@@ -56,29 +53,28 @@ function searchTagsIngredients(){
         
         // Si l'input et vide alors j'affiche tout les tags
         if( input === ""){
-            addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
-            
+            //addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnIngredients, 'ingredients')
-            console.log('RESULT : ', result)
-            selectTag()  
+            
+            selectTag('ingredients--list')  
     }
 
 
 }
 
-searchTagsIngredients()
-
-
 
 /*****************
 * Appareils list *
 *****************/
-function searchTagsAppareils() {
+function searchTagsAppareils(recipesArr) {
 
     // élements du DOM
     const dropDownBtnAppareils = document.getElementById('dropdown__appareils--list')
+
+    // Vide le DOM de son contenue
+    dropDownBtnAppareils.innerHTML = ""
 
     // initialisation des variables
     let tabAppareils = []
@@ -86,8 +82,7 @@ function searchTagsAppareils() {
     // Input
     const inputAppareils = document.getElementById('input__appareils')
     
-
-    recipes.forEach(recette => {
+    recipesArr.forEach(recette => {
             
         // Concatene les appareils de chaque tableau
         tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase())
@@ -99,12 +94,13 @@ function searchTagsAppareils() {
 
     // Affiche les tags
     addListDom(tabAppareils, dropDownBtnAppareils, 'appareils')
-    
+    selectTag('appareils--list')
+
     // Écoute l'input
     inputAppareils.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(e){
+    function filterData(){
 
         // Vide la liste des tags du DOM
         dropDownBtnAppareils.innerHTML = ""
@@ -117,17 +113,16 @@ function searchTagsAppareils() {
         
         // Si l'input et vide alors j'affiche tout les tags
         if( input === ""){
-            addListDom(tabAppareils, dropDownBtnAppareils, 'appareils')
-            
+            //addListDom(tabAppareils, dropDownBtnAppareils, 'appareils')
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnAppareils, 'appareils')
-            console.log('RESULT : ', result)
-            selectTag()  
+            
+            selectTag('appareils--list') 
     }
 }
 
-searchTagsAppareils()
+
 
 
 
@@ -136,18 +131,21 @@ searchTagsAppareils()
 /********************
 * Ustensils list *
 *******************/
-function searchTagsUstensils(){
+function searchTagsUstensils(recipesArr){
     
     // élements du DOM
      const dropDownBtnUstensils = document.getElementById('dropdown__ustensils--list')
  
+    // Vide le DOM de son contenue
+    dropDownBtnUstensils.innerHTML = ""
+
      // initialisation des variables
      let tabUstensils = []
  
      // Input
      const inputUstensils = document.getElementById('input__ustensils')
 
-     recipes.forEach(recette => {
+     recipesArr.forEach(recette => {
         // Re-boucle sur les tableaux d'ustensils pour les concatener 
         recette.ustensils.forEach((ustensils) => {
             
@@ -163,12 +161,13 @@ function searchTagsUstensils(){
 
     // Affiche les tags
     addListDom(tabUstensils, dropDownBtnUstensils, 'ustensils')
+    selectTag('ustensils--list')
 
     // Écoute l'input
     inputUstensils.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(e){
+    function filterData(){
 
         // Vide la liste des tags du DOM
         dropDownBtnUstensils.innerHTML = ""
@@ -181,15 +180,19 @@ function searchTagsUstensils(){
         
         // Si l'input et vide alors j'affiche tout les tags
         if( input === ""){
-            addListDom(tabUstensils, dropDownBtnUstensils, 'ustensils')
-            
+            //addListDom(tabUstensils, dropDownBtnUstensils, 'ustensils')
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnUstensils, 'ustensils')
-            console.log('RESULT : ', result)
-            selectTag()  
+            
+            selectTag('ustensils--list')  
     }
 
 }
 
-searchTagsUstensils()
+
+searchTagsIngredients(recipes)
+searchTagsAppareils(recipes)
+searchTagsUstensils(recipes)
+
+
