@@ -1,4 +1,8 @@
 
+//Global Var
+    // Regex qui sert à suprimer des caractères
+    let regex = /[.]/g
+
 // Les fonction ci-dessous servent à afficher les listes dans les btnDropdown et gere la recherche des tags
 
 /********************
@@ -23,7 +27,7 @@ function searchTagsIngredients(recipesArr){
         recette.ingredients.forEach((ingredients) => {
             
             // Concatene les ingrédients de chaque tableau
-            tabIngredients = tabIngredients.concat(ingredients.ingredient.toLowerCase())
+            tabIngredients = tabIngredients.concat(ingredients.ingredient.toLowerCase().replace(regex, ""))
             
 
         })     
@@ -85,7 +89,7 @@ function searchTagsAppareils(recipesArr) {
     recipesArr.forEach(recette => {
             
         // Concatene les appareils de chaque tableau
-        tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase())
+        tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase().replace(regex, ""))
         
         // Supprime les doublons
         tabAppareils = [...new Set(tabAppareils.sort())]
@@ -150,7 +154,7 @@ function searchTagsUstensils(recipesArr){
         recette.ustensils.forEach((ustensils) => {
             
             // Concatene les ustensils de chaque tableau
-            tabUstensils = tabUstensils.concat(ustensils.toLowerCase())
+            tabUstensils = tabUstensils.concat(ustensils.toLowerCase().replace(regex, ""))
         })
                     
         // Supprime les doublons

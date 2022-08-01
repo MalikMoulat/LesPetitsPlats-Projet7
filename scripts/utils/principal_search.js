@@ -1,5 +1,7 @@
 // Récupère les tags selectionner
 function getSelectTags() {
+    // Regex qui sert à suprimer des caractères
+    let regex = /[ .]/g
 
     // Récupère tout les tags selectionner du DOM
     const listTags = document.getElementsByClassName('tags__p')
@@ -10,7 +12,7 @@ function getSelectTags() {
     // Boucle chaque elements du tableau et les ajoute au tableau arrTagSelectDOM
     for (let i = 0; i < listTags.length ; i++){
 
-        arrTagsSelectDOM.push(listTags[i].innerText.toLocaleLowerCase().replace(/ /g, ''))
+        arrTagsSelectDOM.push(listTags[i].innerText.toLocaleLowerCase().replace(regex, ''))
     }
     
     return arrTagsSelectDOM
@@ -20,6 +22,9 @@ function getSelectTags() {
 
 
 async function princiaplSearch() {
+
+    // Regex qui sert à suprimer des caractères
+    let regex = /[ .]/g
 
     // Récupère tout les tags selectionner
     getSelectTags()
@@ -41,7 +46,7 @@ async function princiaplSearch() {
                 // boucle sur chaque élément de recipes[i].ingredients
                 recipesArr[i].ingredients.forEach(ingredients => {
                     // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
-                    let ingredient1 = ingredients.ingredient.toLocaleLowerCase().replace(/ /g, '')
+                    let ingredient1 = ingredients.ingredient.toLocaleLowerCase().replace(regex, '')
                     // Boucle le tableau des tags selectionnés
                     getSelectTags().forEach(tag => {
                         // Si la valeur de ingredients1 est égale à une valeur du tableau de getSelectTags()
@@ -56,7 +61,7 @@ async function princiaplSearch() {
             // si recipes[i].appliance est supérieur à 1
             if (recipesArr[i].appliance.length > 0){
                 // Crée une variable qui récupère le contenue de appliance
-                const appliance1 = recipesArr[i].appliance.toLocaleLowerCase().replace(/ /g, '')
+                const appliance1 = recipesArr[i].appliance.toLocaleLowerCase().replace(regex, '')
                 // boucle le tableau getSelectTags()
                 getSelectTags().forEach(tag => {
                     // Vérifie si appliance1 est égale a un élémént du tableau getSelectTags()
@@ -72,7 +77,7 @@ async function princiaplSearch() {
                 // Boucle sur chaque éléments du tableau recipes.ustensils
                 recipesArr[i].ustensils.forEach(ustensils => {
                     // Crée une variable qui récupère le contenue de recipes[i].ustensils
-                    let ustensils1 = ustensils.toLocaleLowerCase().replace(/ /g, '')
+                    let ustensils1 = ustensils.toLocaleLowerCase().replace(regex, '')
                     // Boucle le tableau getSelectTags()
                     getSelectTags().forEach(tag => {
                         // Si la valeur de ustensils1 est égale à une valeur de getSelectTags()
@@ -102,7 +107,6 @@ async function princiaplSearch() {
     // Tri le contenue de concatArray par id
     concatArray.sort((a,b) =>  a.id - b.id)
 
-    console.log('CONCAT ARR : ', concatArray)
 
     // Init array
     let doublonsArr = []
@@ -180,8 +184,6 @@ async function princiaplSearch() {
 
         if (getSelectTags().length >= 2){
 
-                
-            
             getRecipesByTag(whatArray())
 
             searchTagsIngredients(whatArray())
@@ -190,7 +192,6 @@ async function princiaplSearch() {
         }
         else if (concatArray.length > 0) {
 
-            
             getRecipesByTag(concatArray)
 
             searchTagsIngredients(concatArray)
@@ -199,7 +200,6 @@ async function princiaplSearch() {
 
         } else if (concatArray.length <= 0){
             
-
             getRecipesByTag(recipes)
 
             searchTagsIngredients(recipes)

@@ -20,6 +20,7 @@ function closeDropdow(id, type) {
 
     btnList[0].style.display = "none"
     btnChoseRecipes[0].style.display = "block"
+    btnChoseRecipes[0].style.display = "flex"
     btnChildren[1].style.transform = "rotate(180deg)"
     btnChildren[1].style.textAlign = "end"
     

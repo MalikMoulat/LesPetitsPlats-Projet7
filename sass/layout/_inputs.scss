@@ -1,11 +1,13 @@
 .primary__div {
-    /*background: #E7E7E7;*/
     position: relative;
     margin: 17px 0 0 0;
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #E7E7E7;
 
     input {
         width: 100%;
-        background: #E7E7E7;
+        background: transparent;
         border: none;
         border-radius: 5px;
         height: 69px;
@@ -17,5 +19,6 @@
         right: 0;
         top: 18px;
         font-size: 36px;
+        margin-right: 18px;
     }
 }

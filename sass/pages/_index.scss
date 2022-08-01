@@ -1,6 +1,19 @@
 body {
     margin: 0 100px;
     font-family: 'Roboto', sans-serif;
+
+    @media (max-width: 1155px) {
+        margin: 0 50px;
+
+        @media (max-width: 899px) {
+            margin: 0 25px;
+
+            @media (max-width: 660px) {
+                margin: 0 10px;
+            }
+        }
+        
+    }
 }
 
 .card {
@@ -9,6 +22,21 @@ body {
     margin-top: 25px;
     row-gap: 50px;
     column-gap: 50px;
+
+    @media (max-width: 1155px) {
+        row-gap: 20px;
+        column-gap: 20px;
+
+        @media (max-width: 899px) {
+            grid-template-columns: 1fr 1fr;
+
+            @media (max-width: 660px) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+
+
 }
 
 #tags {
