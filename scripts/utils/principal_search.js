@@ -234,6 +234,8 @@ async function princiaplSearch() {
             // Affiche les recette par tags
             recipesCardFactory(whatArray(), recipesSection)
 
+            return whatArray()
+
         }
          else if (concatArray.length > 0) {
 
@@ -242,16 +244,20 @@ async function princiaplSearch() {
             // Affiche les recette par tags
             recipesCardFactory(concatArray, recipesSection)
 
+            return concatArray
+
         } else if (recipes.length > 0) {
             recipesSection.innerHTML = ""
             // Affiche toutes les recettes
             recipesCardFactory(recipes, recipesSection)
 
-
+            return recipes
         }
     }
 
     displayRecipes()
+
+    console.log('Display Recipes : ', displayRecipes())
 
     // Écoute l'evenement
     inputPrincipal.addEventListener('input', filterData)
@@ -266,8 +272,10 @@ async function princiaplSearch() {
         const input = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
 
         // Retourne un tableau filtré
-        const result = recipes.filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()))
-        //console.log('RESULT :', result)
+        const result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()) 
+                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase())
+                                                )
+        
 
         // Si la longeur de l'input est inférieur à 3
         if (input.length < 3){

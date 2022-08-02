@@ -26,45 +26,38 @@ function closeDropdow(id, type) {
     
 }
 
-function displayDropDownBtn() {
 
-    const listDropDownIngredients = document.getElementsByClassName('secondary__ingredients')
-    const listDropDownAppareils = document.getElementsByClassName('secondary__appareils')
-    const listDropDownUstensils = document.getElementsByClassName('secondary__Ustensils')
+function closeBtnClickOutside() {
 
-    if (listDropDownIngredients[0].style.display == "block") { 
+    window.addEventListener('mouseup', function(event){
 
-        listDropDownAppareils[0].style.display = "none"
-        listDropDownUstensils[0].style.display = "none"
+        let btnIngredients = this.document.getElementById('ingredients__btn')
+        let inputIngredients = this.document.getElementById('input__ingredients')
 
-        console.log(listDropDownUstensils)
-    } 
-}
+        let btnAppareils = this.document.getElementById('appareils__btn')
+        let inputAppareils = this.document.getElementById('input__appareils')
 
-displayDropDownBtn();
+        let btnUstensils = this.document.getElementById('ustensils__btn')
+        let inputUstensils = this.document.getElementById('input__ustensils')
+        
 
+        //console.log(btnIngredients.childNodes)
 
-function openDropdowAndCloseDropdown() {
-
-   // Select element with box class, assign to box variable
-    const dropDowIngredients = document.querySelector('.secondary__ingredients')
-    const btnIngredients = document.querySelector('.btn__ingredients')
-
-    
-    // Detect all clicks on the document
-    document.addEventListener("click", function(event) {
-        // If user clicks inside the element, do nothing
-        if (event.target.dropDowIngredients !== dropDowIngredients && event.target.btnIngredients !== btnIngredients) {
-            // If user clicks outside the element, hide it!
-            //dropDowClickOutside.classList.add("hidden")
-            console.log('okp')
+        if (event.target !== btnIngredients && event.target !== inputIngredients){
             
-            setTimeout(function () {
-                closeDropdow('secondary__ingredients', 'ingredients')
-            }, 2000)
-            
+            closeDropdow('secondary__ingredients', 'ingredients')
         }
+        if (event.target !== btnAppareils && event.target !== inputAppareils){
+            
+            closeDropdow('secondary__appareils', 'appareils')
+        }
+        if (event.target !== btnUstensils && event.target !== inputUstensils){
+            
+            closeDropdow('secondary__ustensils', 'ustensils')
+        }
+
     })
+
 }
 
-//openDropdowAndCloseDropdown()
+closeBtnClickOutside()
