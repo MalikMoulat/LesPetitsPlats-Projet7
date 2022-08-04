@@ -12,12 +12,10 @@ function selectTag(className){
         for (let i = 0; i < tagList.length; i++) {
 
             // Écoute l'evenement click sur le tag
-            tagList[i].addEventListener('click', (e) => {
+            tagList[i].addEventListener('click', () => {
 
                 // Récupère la valeur du tag cliquer
                 const tagClicked = tagList[i].innerHTML
-                const tagClickedSansEspace = tagClicked.toLocaleLowerCase().replace(regex, '')
-                console.log(tagClickedSansEspace)
 
                 // Récupère data-type (pour ajouter la couleur de fond via une class)
                 const getDataType = tagList[i].getAttribute("data-type")
@@ -36,7 +34,9 @@ function selectTag(className){
 
                     // Injecte la div dans le DOM
                     tagSection.insertAdjacentHTML('beforeEnd', tagAddOnSection)
+
                     princiaplSearch()
+                    
                 }
                 // Si le tags est déja dans le DOM
                 else if (tagsDom.length >= 1){
@@ -56,7 +56,7 @@ function deleteTag(){
     
         for ( let i = 0; i < buttonClose.length; i++){
             // Écoute l'évenement click sur le bouton cliquer
-            buttonClose[i].addEventListener('click' , (e) => {
+            buttonClose[i].addEventListener('click' , () => {
                 // Supprime la DIV parent du bouton
                 buttonClose[i].parentElement.remove()
                 princiaplSearch()

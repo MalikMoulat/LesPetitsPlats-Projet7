@@ -1,4 +1,4 @@
-// list = array     dropDownBtn = DOM   type = ingredients or appareils or ustensils
+// liste = array     dropDownBtn = DOM   type = ingredients or appareils or ustensils
 function addListDom(liste, dropDownBtn, type) {
 
     liste.forEach(list => {

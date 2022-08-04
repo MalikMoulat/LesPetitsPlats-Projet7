@@ -135,7 +135,7 @@ async function princiaplSearch() {
     }
 
     /*  À ce moment la le tabelau doublonsArr contient
-        les recette qui sont presente plusieurs fois 
+        les recettes qui sont presente plusieurs fois 
         dans le tableau concatArray
     */
 
@@ -156,7 +156,7 @@ async function princiaplSearch() {
     
 
 
-    // Suprime tout les doublons dans les tableau
+    // Suprime tout les doublons dans les tableaux
     concatArray = [...new Set(concatArray)]
     doublonsArr = [...new Set(doublonsArr)]
     doublonsArrOnlyWithDoublons = [...new Set(doublonsArrOnlyWithDoublons)]
@@ -222,6 +222,9 @@ async function princiaplSearch() {
     // Section du DOM ou les recettes s'affichent
     const recipesSection = document.getElementById('recipe--card')
 
+    // Section du DOM ou un message s'affiche si aucune recette ne correspond
+    const noRecipesSection = document.getElementById('no__recipes')
+
     // Input
     const inputPrincipal = document.getElementById('input__principal')
 
@@ -257,42 +260,75 @@ async function princiaplSearch() {
 
     displayRecipes()
 
-    console.log('Display Recipes : ', displayRecipes())
+    
 
     // Écoute l'evenement
-    inputPrincipal.addEventListener('input', filterData)
+    inputPrincipal.addEventListener('keyup', filterData)
 
-    // Filtre le tableau concatArray en fonction de la valeur de l'input
+
+
+    // Filtre le tableau que la fonction displayRecipes() retourne en fonction de la valeur de l'input
     function filterData(){
 
-        // Vide le DOM des recettes affichées
-        recipesSection.innerHTML = ""
-
         // Variable contenant la valeur de l'input
-        const input = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
+        const inputPrincipalValue = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
 
         // Retourne un tableau filtré
-        const result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()) 
-                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase())
+        const result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) 
+                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase())
+                                                || e.ingredients.forEach(ingr => ingr.ingredient.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()))
                                                 )
         
+        console.log(result)
+
 
         // Si la longeur de l'input est inférieur à 3
-        if (input.length < 3){
+        if (inputPrincipalValue.length < 3){
 
+            // Vide le DOM des recettes affichées
             recipesSection.innerHTML = ""
+
+            if (inputPrincipalValue.length <= 3) {
+            
+                // Rends la partie du DOM contenant un message "aucune recette" invisible
+                noRecipesSection.style.display = 'none'
+
+            }
+
             // Affiche les recettes
             displayRecipes()
 
             displayTags()
 
-        } else if (input.length >= 3){
+
+        } else if (inputPrincipalValue.length >= 3){
 
             if(result.length == 0){
+                
+                // Vide le DOM des recettes affichées
                 recipesSection.innerHTML = ""
-                console.log('AUCUNE RECETTES TROUVÉES')
+                
+                // Rends la partie du DOM contenant un message "aucune recette" visible
+                noRecipesSection.style.display = 'block'
+
+
             }
+            if(result.length >= 1){
+                
+                // Vide le DOM des recettes affichées
+                recipesSection.innerHTML = ""
+                
+                // Rends la partie du DOM contenant un message "aucune recette" visible
+                noRecipesSection.style.display = 'none'
+
+
+            }
+
+            
+
+            // Vide le DOM des recettes affichées
             recipesSection.innerHTML = ""
+
             // Affiche les recettes filtrés
             recipesCardFactory(result, recipesSection)
 
@@ -304,11 +340,5 @@ async function princiaplSearch() {
     }
 }
 
-/*
-setTimeout(function () {
-    princiaplSearch()
-}, 500)
-
-*/
 
 princiaplSearch()
