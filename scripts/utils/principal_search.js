@@ -35,6 +35,9 @@ async function princiaplSearch() {
     let recipeFilterAppareils = []
     let recipeFilterUstensils = []
 
+    let doublonsArr = []
+    let doublonsArrOnlyWithDoublons = []
+
     
 
     function getRecipesByTag(recipesArr){
@@ -108,9 +111,7 @@ async function princiaplSearch() {
     concatArray.sort((a,b) =>  a.id - b.id)
 
 
-    // Init array
-    let doublonsArr = []
-    let doublonsArrOnlyWithDoublons = []
+
 
     // Boucle le tableau concatArray
     for (let i = 0; i < concatArray.length; i++){
@@ -279,7 +280,6 @@ async function princiaplSearch() {
                                                 || e.ingredients.forEach(ingr => ingr.ingredient.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()))
                                                 )
         
-        console.log(result)
 
 
         // Si la longeur de l'input est inférieur à 3
@@ -338,6 +338,8 @@ async function princiaplSearch() {
             
         }
     }
+
+    filterData()
 }
 
 
