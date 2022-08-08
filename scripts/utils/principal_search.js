@@ -274,12 +274,34 @@ async function princiaplSearch() {
         // Variable contenant la valeur de l'input
         const inputPrincipalValue = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
 
-        // Retourne un tableau filtré
-        const result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) 
-                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase())
-                                                || e.ingredients.forEach(ingr => ingr.ingredient.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()))
-                                                )
+        // init array
+        let filterArrayIngredientWithInput = []
         
+
+        // Retourne un tableau filtré
+        let result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) 
+                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase())
+                                                || e.ingredients.forEach(ingr => {
+                                                    // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
+                                                    let ingredient1 = ingr.ingredient.toLocaleLowerCase().replace(/ /g, '')
+                                                    
+                                                    // Si l'ingredient correspond à la valeur de l'input
+                                                        if (ingredient1.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, '')) ) {
+                                
+                                                            // J'ajoute la recette au tableau filterArrayIngredient
+                                                            filterArrayIngredientWithInput.push(e)
+                                                                      
+                                                        }
+                                                    })
+                                                )
+
+
+        // Concat le tableau result avec filterArrayIngredientWithInput
+        let concatResult = result.concat(filterArrayIngredientWithInput)
+
+
+        // Réfecte la variable result avec la valeur du tableau concatResult
+        result = concatResult
 
 
         // Si la longeur de l'input est inférieur à 3
