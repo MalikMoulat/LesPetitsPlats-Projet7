@@ -274,13 +274,57 @@ async function princiaplSearch() {
         // Variable contenant la valeur de l'input
         const inputPrincipalValue = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
 
-        // Retourne un tableau filtré
-        const result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) 
-                                                || e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase())
-                                                || e.ingredients.forEach(ingr => ingr.ingredient.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()))
-                                                )
-        
+        // init array
+        let result = []
 
+        // Boucle le tableau des recettes
+        for (let i = 0; i < displayRecipes().length; i++) {
+
+            
+            
+            // Si l'input est superieur à 2 caractères
+            if (inputPrincipalValue.length > 2){
+
+
+
+                // Si l'input math avec le nom, la description ou les ingredients de la recette
+                if ( displayRecipes()[i].name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, ''))
+                    || displayRecipes()[i].description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, ''))
+                    ) {
+                    
+                    // Ajoute la recette dans le tableau result
+                    result.push(displayRecipes()[i])
+
+                }
+
+                // Si le tableau des ingredients de la recette contient minimum 1 ingredient
+                else if (displayRecipes()[i].ingredients.length > 0) {
+
+                    // Pour chaque éléments du tableau ingredients
+                    displayRecipes()[i].ingredients.forEach(ingredients => {
+                        // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
+                        let ingredient1 = ingredients.ingredient.toLocaleLowerCase().replace(/ /g, '')
+                        
+                        // Si l'ingredient coreespond a la valeur de l'input
+                        if (ingredient1.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, '')) ) {
+
+                            // J'ajoute la recette au tableau result
+                            result.push(displayRecipes()[i])
+
+                        }
+                    })                    
+                }
+            }
+        }
+
+
+
+        // Suprime tout les doublons dans les tableaux
+        result = [...new Set(result)]
+
+
+
+    
 
         // Si la longeur de l'input est inférieur à 3
         if (inputPrincipalValue.length < 3){
@@ -337,6 +381,8 @@ async function princiaplSearch() {
             searchTagsUstensils(result)
             
         }
+
+        
     }
 
     filterData()

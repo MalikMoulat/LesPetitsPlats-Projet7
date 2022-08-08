@@ -36,6 +36,7 @@ function selectTag(className){
                     tagSection.insertAdjacentHTML('beforeEnd', tagAddOnSection)
 
                     princiaplSearch()
+
                     
                 }
                 // Si le tags est déja dans le DOM
@@ -60,6 +61,7 @@ function deleteTag(){
                 // Supprime la DIV parent du bouton
                 buttonClose[i].parentElement.remove()
                 princiaplSearch()
+
                 
             })
         }
