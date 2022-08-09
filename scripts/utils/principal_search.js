@@ -242,7 +242,7 @@ async function princiaplSearch() {
             return whatArray()
 
         }
-         else if (concatArray.length > 0) {
+         else if (getSelectTags().length > 0) {
 
             recipesSection.innerHTML = ""
 
@@ -259,6 +259,8 @@ async function princiaplSearch() {
             recipesCardFactory(recipes, recipesSection)
 
             return recipes
+
+            
         }
     }
 
@@ -274,11 +276,14 @@ async function princiaplSearch() {
     // Filtre le tableau que la fonction displayRecipes() retourne en fonction de la valeur de l'input
     function filterData(){
 
+
         // Variable contenant la valeur de l'input
         const inputPrincipalValue = inputPrincipal.value.toLocaleLowerCase().replace(/ /g, '')
 
         // init array
         let result = []
+
+        //console.log(displayRecipes())
 
         // Boucle le tableau des recettes
         for (let i = 0; i < displayRecipes().length; i++) {
@@ -393,3 +398,5 @@ async function princiaplSearch() {
 
 
 princiaplSearch()
+
+
