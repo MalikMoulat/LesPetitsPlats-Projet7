@@ -233,6 +233,7 @@ async function princiaplSearch() {
     function displayRecipes(){
 
         if (getSelectTags().length >= 2){
+            
             recipesSection.innerHTML = ""
             
             // Affiche les recette par tags
@@ -243,15 +244,17 @@ async function princiaplSearch() {
         }
          else if (concatArray.length > 0) {
 
-
             recipesSection.innerHTML = ""
+
             // Affiche les recette par tags
             recipesCardFactory(concatArray, recipesSection)
 
             return concatArray
 
         } else if (recipes.length > 0) {
+
             recipesSection.innerHTML = ""
+
             // Affiche toutes les recettes
             recipesCardFactory(recipes, recipesSection)
 
@@ -280,7 +283,7 @@ async function princiaplSearch() {
         // Boucle le tableau des recettes
         for (let i = 0; i < displayRecipes().length; i++) {
 
-            
+            console.log('ici')
             
             // Si l'input est superieur à 2 caractères
             if (inputPrincipalValue.length > 2){
