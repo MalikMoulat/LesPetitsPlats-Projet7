@@ -1,30 +1,26 @@
 // data = recipes array     recipeSection = DOM element
-function recipesCardFactory(data, recipeSection) {
-
+function recipesCardFactory (data, recipeSection) {
     data.forEach(dataRecipe => {
-
         // Création des variables
-        const { id, name, ingredients, time , description} = dataRecipe || {};
+        const { id, name, ingredients, time, description } = dataRecipe || {}
 
         // Init variable pour la liste des ingredients de chaque recette
-        let listCard_HTML = "";
-            
+        let listCardHtml = ''
         ingredients.map((elt) => {
-            listCard_HTML += `<p>
+            listCardHtml += `<p>
                                 <strong>
-                                ${elt.ingredient ? elt.ingredient : ""}:
+                                ${elt.ingredient ? elt.ingredient : ''}:
                                 </strong>
-                                ${elt.quantity ? elt.quantity.toString().trim() : ""} 
-                                ${elt.unit ? elt.unit.toLowerCase().trim() : ""}
-                            </p>`;
-        
-            return listCard_HTML;
-        });
-        
-        // factories des cards (recette)
-        
+                                ${elt.quantity ? elt.quantity.toString().trim() : ''} 
+                                ${elt.unit ? elt.unit.toLowerCase().trim() : ''}
+                            </p>`
 
-            //crée une balise artilce
+            return listCardHtml
+        })
+
+        // factories des cards (recette)
+
+            // crée une balise artilce
             const article = document.createElement('article')
             article.setAttribute('id', id)
 
@@ -42,7 +38,7 @@ function recipesCardFactory(data, recipeSection) {
                                             <div class="card__desc--recipe">
                                                 <div id="ingredients__list--${id}">
                                                     <!--<p>${ingredients.ingredient} ${ingredients.quantity} ${ingredients.unit} </p>--> 
-                                                    ${listCard_HTML}
+                                                    ${listCardHtml}
                                                 </div>
                                                 <div class="desc--recipe">
                                                     <p>
@@ -59,7 +55,7 @@ function recipesCardFactory(data, recipeSection) {
             try {
                 recipeSection.appendChild(article)
             } catch {
-    
+
             }
     })
 }

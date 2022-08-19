@@ -1,29 +1,25 @@
-//Selectionne et affiche le tag dans la section tag className = class des tag de la list du button dropDown
-function selectTag(className){
-
+// Selectionne et affiche le tag dans la section tag className = class des tag de la list du button dropDown
+function selectTag (className) {
     // Regex qui sert à suprimer des caractères
-    let regex = /[ .]/g
+    const regex = /[ .]/g
 
-    //Récupère les elements du DOM
+    // Récupère les elements du DOM
     const tagSection = document.getElementById('tags') // Section tag
     const tagList = document.getElementsByClassName(className) // Selectionne tout les tags du dropDown btn du DOM
 
         // Boucle dans le tableau des tags
         for (let i = 0; i < tagList.length; i++) {
-
             // Écoute l'evenement click sur le tag
             tagList[i].addEventListener('click', () => {
-
                 // Récupère la valeur du tag cliquer
                 const tagClicked = tagList[i].innerHTML
 
                 // Récupère data-type (pour ajouter la couleur de fond via une class)
-                const getDataType = tagList[i].getAttribute("data-type")
+                const getDataType = tagList[i].getAttribute('data-type')
 
                 // Si le tags est déja dans le DOM il est récupérer
 
                 const tagsDom = document.getElementsByClassName('tags__' + tagClicked.toLocaleLowerCase().replace(regex, ''))
-                
                 // Si la liste de tagsDom est inférieur à 1 celà veut dire que le tags n'a pas encore été selectionner donc je l'ajoute au DOM
                 if (tagsDom.length < 1) {
                     // Crée la div avec les valeurs récupèrer
@@ -36,32 +32,25 @@ function selectTag(className){
                     tagSection.insertAdjacentHTML('beforeEnd', tagAddOnSection)
 
                     princiaplSearch()
-                    
-                }
+
                 // Si le tags est déja dans le DOM
-                else if (tagsDom.length >= 1){
+                } else if (tagsDom.length >= 1) {
                     console.log('TAG DEJA AJOUTER : ', tagsDom)
                 }
-                
             })
         }
 }
 
-
 // Supprime un tag selectionner
-function deleteTag(){
-
+function deleteTag () {
     // Récupère tout les boutons liée aux tags
     const buttonClose = document.getElementsByClassName('fa-times-circle')
-    
-        for ( let i = 0; i < buttonClose.length; i++){
+        for (let i = 0; i < buttonClose.length; i++) {
             // Écoute l'évenement click sur le bouton cliquer
-            buttonClose[i].addEventListener('click' , () => {
+            buttonClose[i].addEventListener('click', () => {
                 // Supprime la DIV parent du bouton
                 buttonClose[i].parentElement.remove()
                 princiaplSearch()
-                
             })
         }
 }
-

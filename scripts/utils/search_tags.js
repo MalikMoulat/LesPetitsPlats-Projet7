@@ -1,20 +1,19 @@
 
-//Global Var
+// Global Var
     // Regex qui sert à suprimer des caractères
-    let regex = /[.]/g
+    const regex = /[.]/g
 
 // Les fonction ci-dessous servent à afficher les listes dans les btnDropdown et gere la recherche des tags
 
 /********************
 * Ingredients list *
 *******************/
-function searchTagsIngredients(recipesArr){
-
+function searchTagsIngredients (recipesArr) {
     // élements du DOM
     const dropDownBtnIngredients = document.getElementById('dropdown__ingredients--list')
 
     // Vide le DOM de son contenue
-    dropDownBtnIngredients.innerHTML = ""
+    dropDownBtnIngredients.innerHTML = ''
 
     // initialisation des variables
     let tabIngredients = []
@@ -23,77 +22,65 @@ function searchTagsIngredients(recipesArr){
     const inputIngredients = document.getElementById('input__ingredients')
 
     recipesArr.forEach(recette => {
-        // Re-boucle sur les tableaux d'ingrédients pour les concatener 
+        // Re-boucle sur les tableaux d'ingrédients pour les concatener
         recette.ingredients.forEach((ingredients) => {
-            
             // Concatene les ingrédients de chaque tableau
-            tabIngredients = tabIngredients.concat(ingredients.ingredient.toLowerCase().replace(regex, ""))
-            
-
-        })     
+            tabIngredients = tabIngredients.concat(ingredients.ingredient.toLowerCase().replace(regex, ''))
+        })
         // Supprime les doublons
         tabIngredients = [...new Set(tabIngredients.sort())]
-        
     })
 
     // Affiche les tags
     addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
     selectTag('ingredients--list')
-    
+
     // Écoute l'input
     inputIngredients.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(){
-
+    function filterData () {
         // Vide la liste des tags du DOM
-        dropDownBtnIngredients.innerHTML = ""
+        dropDownBtnIngredients.innerHTML = ''
 
         // Variable contenant la valeur de l'input
         const input = inputIngredients.value.toLocaleLowerCase().replace(/ /g, '')
 
-        // Retourne un tableau filtré 
+        // Retourne un tableau filtré
         const result = tabIngredients.filter(e => e.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()))
-        
+
         // Si l'input et vide alors j'affiche tout les tags
-        if( input === ""){
-            //addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
+        if (input === '') {
+            // Affiche tout les tags
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnIngredients, 'ingredients')
-            
-            selectTag('ingredients--list')  
+            selectTag('ingredients--list')
     }
-
-
 }
-
 
 /*****************
 * Appareils list *
 *****************/
-function searchTagsAppareils(recipesArr) {
-
+function searchTagsAppareils (recipesArr) {
     // élements du DOM
     const dropDownBtnAppareils = document.getElementById('dropdown__appareils--list')
 
     // Vide le DOM de son contenue
-    dropDownBtnAppareils.innerHTML = ""
+    dropDownBtnAppareils.innerHTML = ''
 
     // initialisation des variables
     let tabAppareils = []
 
     // Input
     const inputAppareils = document.getElementById('input__appareils')
-    
+
     recipesArr.forEach(recette => {
-            
         // Concatene les appareils de chaque tableau
-        tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase().replace(regex, ""))
-        
+        tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase().replace(regex, ''))
+
         // Supprime les doublons
         tabAppareils = [...new Set(tabAppareils.sort())]
-        
     })
 
     // Affiche les tags
@@ -104,63 +91,49 @@ function searchTagsAppareils(recipesArr) {
     inputAppareils.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(){
-
+    function filterData () {
         // Vide la liste des tags du DOM
-        dropDownBtnAppareils.innerHTML = ""
+        dropDownBtnAppareils.innerHTML = ''
 
         // Variable contenant la valeur de l'input
         const input = inputAppareils.value.toLocaleLowerCase().replace(/ /g, '')
 
-        // Retourne un tableau filtré 
+        // Retourne un tableau filtré
         const result = tabAppareils.filter(e => e.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()))
-        
         // Si l'input et vide alors j'affiche tout les tags
-        if( input === ""){
-            //addListDom(tabAppareils, dropDownBtnAppareils, 'appareils')
+        if (input === '') {
+            // Affiche tout les tags
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnAppareils, 'appareils')
-            
-            selectTag('appareils--list') 
+            selectTag('appareils--list')
     }
 }
-
-
-
-
-
-
 
 /********************
 * Ustensils list *
 *******************/
-function searchTagsUstensils(recipesArr){
-    
+function searchTagsUstensils (recipesArr) {
     // élements du DOM
      const dropDownBtnUstensils = document.getElementById('dropdown__ustensils--list')
- 
+
     // Vide le DOM de son contenue
-    dropDownBtnUstensils.innerHTML = ""
+    dropDownBtnUstensils.innerHTML = ''
 
      // initialisation des variables
      let tabUstensils = []
- 
+
      // Input
      const inputUstensils = document.getElementById('input__ustensils')
 
      recipesArr.forEach(recette => {
-        // Re-boucle sur les tableaux d'ustensils pour les concatener 
+        // Re-boucle sur les tableaux d'ustensils pour les concatener
         recette.ustensils.forEach((ustensils) => {
-            
             // Concatene les ustensils de chaque tableau
-            tabUstensils = tabUstensils.concat(ustensils.toLowerCase().replace(regex, ""))
+            tabUstensils = tabUstensils.concat(ustensils.toLowerCase().replace(regex, ''))
         })
-                    
         // Supprime les doublons
         tabUstensils = [...new Set(tabUstensils.sort())]
-        
-        
     })
 
     // Affiche les tags
@@ -171,32 +144,25 @@ function searchTagsUstensils(recipesArr){
     inputUstensils.addEventListener('input', filterData)
 
     // filtre le tableau tabIngredient en fonction de la valeur de l'input
-    function filterData(){
-
+    function filterData () {
         // Vide la liste des tags du DOM
-        dropDownBtnUstensils.innerHTML = ""
+        dropDownBtnUstensils.innerHTML = ''
 
         // Variable contenant la valeur de l'input
         const input = inputUstensils.value.toLocaleLowerCase().replace(/ /g, '')
 
-        // Retourne un tableau filtré 
+        // Retourne un tableau filtré
         const result = tabUstensils.filter(e => e.toLocaleLowerCase().replace(/ /g, '').includes(input.toLocaleLowerCase()))
-        
         // Si l'input et vide alors j'affiche tout les tags
-        if( input === ""){
-            //addListDom(tabUstensils, dropDownBtnUstensils, 'ustensils')
+        if (input === '') {
+            // Affiche tout les tags
         }
         // Sinon j'affiche les tag contenu dans le tableau filtré
             addListDom(result, dropDownBtnUstensils, 'ustensils')
-            
-            selectTag('ustensils--list')  
+            selectTag('ustensils--list')
     }
-
 }
-
 
 searchTagsIngredients(recipes)
 searchTagsAppareils(recipes)
 searchTagsUstensils(recipes)
-
-
