@@ -23,7 +23,6 @@ async function princiaplSearch () {
 
     // Récupère tout les tags selectionner
     getSelectTags()
-    console.log(getSelectTags())
 
     // Init array
     const recipeFilterIngredients = []
