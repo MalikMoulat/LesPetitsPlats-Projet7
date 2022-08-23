@@ -41,21 +41,6 @@ function selectTag (className) {
             })
         }
 }
-/*
-// Supprime un tag selectionner
-function deleteTag () {
-    // Récupère tout les boutons liée aux tags
-    const buttonClose = document.getElementsByClassName('fa-times-circle')
-        for (let i = 0; i < buttonClose.length; i++) {
-            // Écoute l'évenement click sur le bouton cliquer
-            buttonClose[i].addEventListener('click', () => {
-                // Supprime la DIV parent du bouton
-                buttonClose[i].parentElement.remove()
-                princiaplSearch()
-            })
-        }
-}
-*/
 
 function deleteTag (id) {
     id.remove()

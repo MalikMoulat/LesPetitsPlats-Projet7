@@ -21,6 +21,7 @@ function searchTagsIngredients (recipesArr) {
     // Input
     const inputIngredients = document.getElementById('input__ingredients')
 
+    try {
     recipesArr.forEach(recette => {
         // Re-boucle sur les tableaux d'ingrédients pour les concatener
         recette.ingredients.forEach((ingredients) => {
@@ -30,6 +31,9 @@ function searchTagsIngredients (recipesArr) {
         // Supprime les doublons
         tabIngredients = [...new Set(tabIngredients.sort())]
     })
+} catch {
+
+}
 
     // Affiche les tags
     addListDom(tabIngredients, dropDownBtnIngredients, 'ingredients')
@@ -75,6 +79,7 @@ function searchTagsAppareils (recipesArr) {
     // Input
     const inputAppareils = document.getElementById('input__appareils')
 
+    try {
     recipesArr.forEach(recette => {
         // Concatene les appareils de chaque tableau
         tabAppareils = tabAppareils.concat(recette.appliance.toLowerCase().replace(regex, ''))
@@ -82,7 +87,9 @@ function searchTagsAppareils (recipesArr) {
         // Supprime les doublons
         tabAppareils = [...new Set(tabAppareils.sort())]
     })
+} catch {
 
+}
     // Affiche les tags
     addListDom(tabAppareils, dropDownBtnAppareils, 'appareils')
     selectTag('appareils--list')
@@ -126,15 +133,17 @@ function searchTagsUstensils (recipesArr) {
      // Input
      const inputUstensils = document.getElementById('input__ustensils')
 
-     recipesArr.forEach(recette => {
-        // Re-boucle sur les tableaux d'ustensils pour les concatener
-        recette.ustensils.forEach((ustensils) => {
-            // Concatene les ustensils de chaque tableau
-            tabUstensils = tabUstensils.concat(ustensils.toLowerCase().replace(regex, ''))
+    if (recipesArr && recipesArr.length) {
+        recipesArr.forEach(recette => {
+            // Re-boucle sur les tableaux d'ustensils pour les concatener
+            recette.ustensils.forEach((ustensils) => {
+                // Concatene les ustensils de chaque tableau
+                tabUstensils = tabUstensils.concat(ustensils.toLowerCase().replace(regex, ''))
+            })
+            // Supprime les doublons
+            tabUstensils = [...new Set(tabUstensils.sort())]
         })
-        // Supprime les doublons
-        tabUstensils = [...new Set(tabUstensils.sort())]
-    })
+    }
 
     // Affiche les tags
     addListDom(tabUstensils, dropDownBtnUstensils, 'ustensils')

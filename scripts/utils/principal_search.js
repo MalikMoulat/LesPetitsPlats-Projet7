@@ -33,54 +33,56 @@ async function princiaplSearch () {
     let doublonsArrOnlyWithDoublons = []
 
     function getRecipesByTag (recipesArr) {
-        // Boucle le tableau des recettes
-        for (let i = 0; i < recipesArr.length; i++) {
-            // Si recipes[i].ingredients est supérieur à 1
-            if (recipesArr[i].ingredients.length > 0) {
-                // boucle sur chaque élément de recipes[i].ingredients
-                recipesArr[i].ingredients.forEach(ingredients => {
-                    // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
-                    const ingredient1 = ingredients.ingredient.toLocaleLowerCase().replace(regex, '')
-                    // Boucle le tableau des tags selectionnés
+        if (recipesArr && recipesArr.length) {
+            // Boucle le tableau des recettes
+            for (let i = 0; i < recipesArr.length; i++) {
+                // Si recipes[i].ingredients est supérieur à 1
+                if (recipesArr[i].ingredients.length > 0) {
+                    // boucle sur chaque élément de recipes[i].ingredients
+                    recipesArr[i].ingredients.forEach(ingredients => {
+                        // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
+                        const ingredient1 = ingredients.ingredient.toLocaleLowerCase().replace(regex, '')
+                        // Boucle le tableau des tags selectionnés
+                        getSelectTags().forEach(tag => {
+                            // Si la valeur de ingredients1 est égale à une valeur du tableau de getSelectTags()
+                            if (ingredient1 === tag) {
+                                // Ajoute la recette dans le tableau RecipesFilterIngredients
+                                recipeFilterIngredients.push(recipesArr[i])
+                            }
+                        })
+                    })
+                }
+
+                // si recipes[i].appliance est supérieur à 1
+                if (recipesArr[i].appliance.length > 0) {
+                    // Crée une variable qui récupère le contenue de appliance
+                    const appliance1 = recipesArr[i].appliance.toLocaleLowerCase().replace(regex, '')
+                    // boucle le tableau getSelectTags()
                     getSelectTags().forEach(tag => {
-                        // Si la valeur de ingredients1 est égale à une valeur du tableau de getSelectTags()
-                        if (ingredient1 === tag) {
-                            // Ajoute la recette dans le tableau RecipesFilterIngredients
-                            recipeFilterIngredients.push(recipesArr[i])
+                        // Vérifie si appliance1 est égale a un élémént du tableau getSelectTags()
+                        if (appliance1 === tag) {
+                            // Ajoute la recette dans le tableau recipesFilterAppareils
+                            recipeFilterAppareils.push(recipesArr[i])
                         }
                     })
-                })
-            }
+                }
 
-            // si recipes[i].appliance est supérieur à 1
-            if (recipesArr[i].appliance.length > 0) {
-                // Crée une variable qui récupère le contenue de appliance
-                const appliance1 = recipesArr[i].appliance.toLocaleLowerCase().replace(regex, '')
-                // boucle le tableau getSelectTags()
-                getSelectTags().forEach(tag => {
-                    // Vérifie si appliance1 est égale a un élémént du tableau getSelectTags()
-                    if (appliance1 === tag) {
-                        // Ajoute la recette dans le tableau recipesFilterAppareils
-                        recipeFilterAppareils.push(recipesArr[i])
-                    }
-                })
-            }
-
-            // Si recipes[i].ustensils est supérieur à 1
-            if (recipesArr[i].ustensils.length > 0) {
-                // Boucle sur chaque éléments du tableau recipes.ustensils
-                recipesArr[i].ustensils.forEach(ustensils => {
-                    // Crée une variable qui récupère le contenue de recipes[i].ustensils
-                    const ustensils1 = ustensils.toLocaleLowerCase().replace(regex, '')
-                    // Boucle le tableau getSelectTags()
-                    getSelectTags().forEach(tag => {
-                        // Si la valeur de ustensils1 est égale à une valeur de getSelectTags()
-                        if (ustensils1 === tag) {
-                            // Ajoute la recette dans le tableau recipesFilterUstensils
-                            recipeFilterUstensils.push(recipesArr[i])
-                        }
+                // Si recipes[i].ustensils est supérieur à 1
+                if (recipesArr[i].ustensils.length > 0) {
+                    // Boucle sur chaque éléments du tableau recipes.ustensils
+                    recipesArr[i].ustensils.forEach(ustensils => {
+                        // Crée une variable qui récupère le contenue de recipes[i].ustensils
+                        const ustensils1 = ustensils.toLocaleLowerCase().replace(regex, '')
+                        // Boucle le tableau getSelectTags()
+                        getSelectTags().forEach(tag => {
+                            // Si la valeur de ustensils1 est égale à une valeur de getSelectTags()
+                            if (ustensils1 === tag) {
+                                // Ajoute la recette dans le tableau recipesFilterUstensils
+                                recipeFilterUstensils.push(recipesArr[i])
+                            }
+                        })
                     })
-                })
+                }
             }
         }
     }
@@ -222,19 +224,24 @@ async function princiaplSearch () {
         const filterArrayIngredientWithInput = []
 
         // Retourne un tableau filtré
-        let result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) ||
-                                                 e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) ||
-                                                 e.ingredients.forEach(ingr => {
-                                                    // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
-                                                    const ingredient1 = ingr.ingredient.toLocaleLowerCase().replace(/ /g, '')
 
-                                                    // Si l'ingredient correspond à la valeur de l'input
-                                                        if (ingredient1.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, ''))) {
-                                                            // J'ajoute la recette au tableau filterArrayIngredient
-                                                            filterArrayIngredientWithInput.push(e)
-                                                        }
-                                                    })
-                                                )
+        let result = []
+
+        if (result && result.length) {
+            result = displayRecipes().filter(e => e.name.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) ||
+                                                    e.description.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase()) ||
+                                                    e.ingredients.forEach(ingr => {
+                                                        // Crée une variable qui récupère le contenue de recipes[i].ingredients.ingredient
+                                                        const ingredient1 = ingr.ingredient.toLocaleLowerCase().replace(/ /g, '')
+
+                                                        // Si l'ingredient correspond à la valeur de l'input
+                                                            if (ingredient1.toLocaleLowerCase().replace(/ /g, '').includes(inputPrincipalValue.toLocaleLowerCase().replace(/ /g, ''))) {
+                                                                // J'ajoute la recette au tableau filterArrayIngredient
+                                                                filterArrayIngredientWithInput.push(e)
+                                                            }
+                                                        })
+                                                    )
+                                            }
 
         // Concat le tableau result avec filterArrayIngredientWithInput
         const concatResult = result.concat(filterArrayIngredientWithInput)
