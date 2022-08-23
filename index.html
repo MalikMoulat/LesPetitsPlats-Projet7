@@ -12,19 +12,19 @@
         <header>
             <img src="assets/logo/logo.png" alt="Les petits plats">
         </header>
-        <section class="primary">
+        <div class="primary">
             <!-- Barre de recherche principal -->
             <div class="primary__div">
                 <input id="input__principal" type="text" placeholder="Rechercher une recette">
                 <i class="fas fa-search"></i>
             </div>
-        </section>
+        </div>
 
-        <section id="tags">
+        <div id="tags">
 
-        </section>
+        </div>
 
-        <section class="secondary">
+        <div class="secondary">
             <div id="ingredients__btn">
                 <button class="btn__ingredients color__ingredients" onclick="openDropdow('secondary__ingredients', 'ingredients')">
                     Ingredients
@@ -78,26 +78,24 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="no__recipes">
+        <div id="no__recipes">
             <p>
                 Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.
             </p>
-        </section>
+        </div>
 
-        <section id="recipe--card" class="card">
+        <div id="recipe--card" class="card">
 
             <!-- Injection de l'élément généré avec JavaScript ici -->
 
-        </section>
+        </div>
 
         <script src="data/recipes.js"></script>
-        <script src="scripts/pages/index.js" type="module"></script>
         <script src="scripts/factories/tags_list.js"></script>
         <script src="scripts/factories/recipes_card.js"></script>
 
-        <script src="scripts/main.js" type="module"></script>
         <script src="scripts/utils/buttons.js"></script>
         <script src="scripts/utils/tags.js"></script>
         <script src="scripts/utils/search_tags.js"></script>

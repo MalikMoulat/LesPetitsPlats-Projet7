@@ -27,9 +27,10 @@ function selectTag(className){
                 // Si la liste de tagsDom est inférieur à 1 celà veut dire que le tags n'a pas encore été selectionner donc je l'ajoute au DOM
                 if (tagsDom.length < 1) {
                     // Crée la div avec les valeurs récupèrer
-                    const tagAddOnSection = `   <div class="${'color__' + getDataType} tags">
-                                                    <p class="${'tags__' + tagClicked.toLocaleLowerCase().replace(regex, '')} tags__p">${tagClicked}</p>
-                                                    <i class="far fa-times-circle" onclick="deleteTag()"></i>
+                    const tagAddOnSection = `   <div class="${'color__' + getDataType} tags" id=${tagClicked.toLocaleLowerCase().replace(regex, '')}>
+                                                <p class="${'tags__' + tagClicked.toLocaleLowerCase().replace(regex, '')} tags__p">${tagClicked}</p>
+                                                <i class="far fa-times-circle" 
+                                                onclick="deleteTag(${tagClicked.toLocaleLowerCase().replace(regex, '')})"></i>
                                                 </div>`
 
                     // Injecte la div dans le DOM
@@ -50,20 +51,9 @@ function selectTag(className){
 
 
 // Supprime un tag selectionner
-function deleteTag(){
+function deleteTag (id) {
+    id.remove()
 
-    // Récupère tout les boutons liée aux tags
-    const buttonClose = document.getElementsByClassName('fa-times-circle')
-    
-        for ( let i = 0; i < buttonClose.length; i++){
-            // Écoute l'évenement click sur le bouton cliquer
-            buttonClose[i].addEventListener('click' , () => {
-                // Supprime la DIV parent du bouton
-                buttonClose[i].parentElement.remove()
-                princiaplSearch()
-
-                
-            })
-        }
+    princiaplSearch()
 }
 
