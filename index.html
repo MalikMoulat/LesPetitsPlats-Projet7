@@ -6,26 +6,26 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="main.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
         <link rel="icon" type="image/x-icon" href="assets/logo/favicon.png">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
             <img src="assets/logo/logo.png" alt="Les petits plats">
         </header>
-        <section class="primary">
+        <div class="primary">
             <!-- Barre de recherche principal -->
             <div class="primary__div">
                 <input id="input__principal" type="text" placeholder="Rechercher une recette">
                 <i class="fas fa-search"></i>
             </div>
-        </section>
+        </div>
 
-        <section id="tags">
+        <div id="tags">
 
-        </section>
+        </div>
 
-        <section class="secondary">
+        <div class="secondary">
             <div id="ingredients__btn">
                 <button class="btn__ingredients color__ingredients" onclick="openDropdow('secondary__ingredients', 'ingredients')">
                     Ingredients
@@ -79,26 +79,24 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <section id="no__recipes">
+        <div id="no__recipes">
             <p>
                 Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.
             </p>
-        </section>
+        </div>
 
-        <section id="recipe--card" class="card">
+        <div id="recipe--card" class="card">
 
             <!-- Injection de l'élément généré avec JavaScript ici -->
 
-        </section>
+        </div>
 
         <script src="data/recipes.js"></script>
-        <script src="scripts/pages/index.js" type="module"></script>
         <script src="scripts/factories/tags_list.js"></script>
         <script src="scripts/factories/recipes_card.js"></script>
 
-        <script src="scripts/main.js" type="module"></script>
         <script src="scripts/utils/buttons.js"></script>
         <script src="scripts/utils/tags.js"></script>
         <script src="scripts/utils/search_tags.js"></script>

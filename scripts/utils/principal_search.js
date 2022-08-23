@@ -23,6 +23,7 @@ async function princiaplSearch () {
 
     // Récupère tout les tags selectionner
     getSelectTags()
+    console.log(getSelectTags())
 
     // Init array
     const recipeFilterIngredients = []
@@ -193,7 +194,7 @@ async function princiaplSearch () {
             recipesCardFactory(whatArray(), recipesSection)
 
             return whatArray()
-        } else if (concatArray.length > 0) {
+        } else if (getSelectTags().length > 0) {
             recipesSection.innerHTML = ''
             // Affiche les recette par tags
             recipesCardFactory(concatArray, recipesSection)
